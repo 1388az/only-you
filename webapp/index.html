@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>فقط برای تو ♡</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--plum:#24093a;--plum2:#3a1052;--wine:#6d1238;--rose:#ff9fbd;--blush:#ffd9e6;--ink:#fdeef4;--mute:#d9b8ca;
+--glass:rgba(255,255,255,.08);--line:rgba(255,255,255,.16);--danger:#ff6b8a;
+--font:'Vazirmatn',Tahoma,'Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--plum);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.8}
+body{background:radial-gradient(900px 500px at 85% -10%,var(--wine),transparent 70%),radial-gradient(700px 500px at 0% 110%,#5b1a6e,transparent 70%),var(--plum);background-attachment:fixed;
+padding:calc(env(safe-area-inset-top,0px) + 12px) 14px calc(env(safe-area-inset-bottom,0px) + 84px)}
+h1,h2,h3{margin:0 0 8px;font-weight:800}
+h2{font-size:19px}h3{font-size:16px}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:16px;margin:0 0 12px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.hero{text-align:center;padding:26px 16px 22px;border-radius:28px;background:linear-gradient(160deg,rgba(109,18,56,.75),rgba(58,16,82,.65));border:1px solid var(--line)}
+.hero .title{font-size:15px;color:var(--blush);letter-spacing:.02em}
+.hero .num{font-size:clamp(70px,24vw,118px);font-weight:800;line-height:1.05;color:var(--rose);text-shadow:0 6px 40px rgba(255,159,189,.45)}
+.hero .sub{color:var(--blush);font-size:14px}
+.heart{display:inline-block;animation:beat 1.8s ease-in-out infinite}
+@keyframes beat{0%,60%,100%{transform:scale(1)}20%{transform:scale(1.22)}40%{transform:scale(1.05)}}
+@media (prefers-reduced-motion:reduce){.heart{animation:none}*{transition:none!important}}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.grow{flex:1}.sp{justify-content:space-between}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{text-align:center;padding:12px 6px}.stat b{display:block;font-size:22px;color:var(--rose)}.stat span{color:var(--mute);font-size:12.5px}
+.btn{font:inherit;font-weight:600;border:0;border-radius:14px;padding:10px 16px;background:var(--rose);color:#3b0a24;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.danger{background:transparent;color:var(--danger);border:1px solid var(--danger)}
+.btn.sm{padding:6px 12px;font-size:13px}.btn:disabled{opacity:.5}
+.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.quick .btn{background:var(--glass);color:var(--ink);border:1px solid var(--line);padding:14px}
+input,textarea,select{font:inherit;width:100%;color:var(--ink);background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:12px;padding:10px 12px;outline:none}
+input:focus,textarea:focus,select:focus,.btn:focus-visible{outline:2px solid var(--rose);outline-offset:1px}
+select option{color:#222}textarea{min-height:120px;resize:vertical}
+label{display:block;margin:10px 0 4px;color:var(--blush);font-size:13.5px}
+.pick{display:grid;grid-template-columns:1.2fr 1.4fr 1fr;gap:8px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px}
+.chip{flex:none;font:inherit;font-size:13.5px;border-radius:999px;padding:5px 14px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--rose);color:#3b0a24;border-color:var(--rose)}
+.nav{position:fixed;right:0;left:0;bottom:0;display:flex;background:rgba(36,9,58,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:6px 4px calc(env(safe-area-inset-bottom,0px) + 6px);z-index:5}
+.nav button{flex:1;font:inherit;font-size:11.5px;background:none;border:0;color:var(--mute);padding:4px 0;cursor:pointer}
+.nav button i{display:block;font-style:normal;font-size:20px;line-height:1.3}.nav button.on{color:var(--rose)}
+.tl{position:relative;padding-right:22px}.tl:before{content:"";position:absolute;right:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .item{position:relative;display:flex;gap:12px;cursor:pointer}.tl .item:before{content:"";position:absolute;right:-21px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--rose)}
+.thumb{width:64px;height:64px;border-radius:14px;object-fit:cover;background:rgba(0,0,0,.3);flex:none}
+.muted{color:var(--mute);font-size:13px}.badge{color:var(--blush);font-size:12.5px;margin-inline-end:8px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:rgba(0,0,0,.3);cursor:pointer}
+.big{width:100%;max-height:60vh;object-fit:contain;border-radius:14px;background:#000}
+.sheet-bg{position:fixed;inset:0;background:rgba(10,2,20,.7);z-index:10;display:none;align-items:flex-end;justify-content:center}
+.sheet-bg.open{display:flex}
+.sheet{width:100%;max-width:560px;max-height:90vh;overflow:auto;background:linear-gradient(180deg,#3a1052,#24093a);border:1px solid var(--line);border-radius:26px 26px 0 0;padding:18px 16px calc(env(safe-area-inset-bottom,0px) + 18px)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 90px);background:#000c;border:1px solid var(--line);padding:8px 16px;border-radius:999px;z-index:20;display:none;max-width:90%;text-align:center}
+.err{border-color:var(--danger)}
+.env{position:relative;width:240px;height:160px;margin:20px auto;background:var(--blush);border-radius:10px;cursor:pointer;color:var(--wine);display:flex;align-items:center;justify-content:center;font-size:40px;box-shadow:0 10px 30px #0006}
+.env .flap{position:absolute;top:0;right:0;left:0;height:90px;background:var(--rose);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s}
+.env.open .flap{transform:rotateX(180deg)}
+.paper{background:#fff7fa;color:#3b0a24;border-radius:14px;padding:18px;white-space:pre-wrap}
+.special{border-color:var(--rose);box-shadow:0 0 30px rgba(255,159,189,.35)}
+.rec{display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0}.dot{width:12px;height:12px;border-radius:50%;background:var(--danger)}
+.load{text-align:center;padding:40px;color:var(--mute)}
+audio{width:100%;margin-top:6px}[hidden]{display:none!important}.dotb{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--danger);margin-inline-start:4px;vertical-align:middle}
+</style>
+</head>
+<body>
+<main id="view"></main>
+<nav class="nav" id="nav" hidden></nav>
+<div class="sheet-bg" id="sbg"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+'use strict';
+const tg = window.Telegram && window.Telegram.WebApp;
+if (tg) { tg.ready(); tg.expand(); try { tg.BackButton.onClick(() => closeSheet()); } catch (e) {} try { tg.setHeaderColor('#24093a'); tg.setBackgroundColor('#24093a'); } catch (e) {} }
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const MONTHS = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+const ERR = {unauthorized:'نشست منقضی شده؛ مینی‌اپ را از داخل ربات دوباره باز کن.', forbidden:'دسترسی نداری.', consent_required:'ابتدا باید رضایت حریم خصوصی را تأیید کنی.',
+  paused:'ثبت خاطرات متوقف شده است (از تنظیمات ادامه بده).', file_too_large:'حجم فایل بیش از حد مجاز است (عکس ۱۰MB، ویس ۱۵MB).', invalid_file_type:'نوع فایل پشتیبانی نمی‌شود.',
+  title_required:'عنوان لازم است.', body_required:'متن لازم است.', bad_date:'تاریخ نامعتبر است.', admin_only:'فقط مدیر.', not_found:'پیدا نشد.', server_error:'خطای سرور؛ کمی بعد دوباره امتحان کن.', rate_limited:'درخواست‌ها زیاد بود؛ چند لحظه صبر کن.'};
+let me = null, tab = 'home', clockT = null;
+
+/* ── تقویم شمسی ── */
+function g2j(gy,gm,gd){const t=[0,31,59,90,120,151,181,212,243,273,304,334];const g2=gm>2?gy+1:gy;let days=355666+365*gy+Math.floor((g2+3)/4)-Math.floor((g2+99)/100)+Math.floor((g2+399)/400)+gd+t[gm-1];let jy=-1595+33*Math.floor(days/12053);days%=12053;jy+=4*Math.floor(days/1461);days%=1461;if(days>365){jy+=Math.floor((days-1)/365);days=(days-1)%365}let jm,jd;if(days<186){jm=1+Math.floor(days/31);jd=1+days%31}else{jm=7+Math.floor((days-186)/30);jd=1+(days-186)%30}return[jy,jm,jd]}
+function j2g(jy,jm,jd){jy+=1595;let days=-355668+365*jy+Math.floor(jy/33)*8+Math.floor(((jy%33)+3)/4)+jd+(jm<7?(jm-1)*31:(jm-7)*30+186);let gy=400*Math.floor(days/146097);days%=146097;if(days>36524){days--;gy+=100*Math.floor(days/36524);days%=36524;if(days>=365)days++}gy+=4*Math.floor(days/1461);days%=1461;if(days>365){gy+=Math.floor((days-1)/365);days=(days-1)%365}let gd=days+1;const lp=(gy%4==0&&gy%100!=0)||gy%400==0;const s=[0,31,lp?29:28,31,30,31,30,31,31,30,31,30,31];let gm=0;while(gm<13&&gd>s[gm]){gd-=s[gm];gm++}return[gy,gm,gd]}
+function jToday(){const d=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Tehran'}));return g2j(d.getFullYear(),d.getMonth()+1,d.getDate())}
+function picker(id,o){o=o||{};const cy=jToday()[0],from=o.from!=null?o.from:cy-40,to=o.to!=null?o.to:cy+1;
+  const v=o.val||(o.empty?null:jToday());const sel=(c)=>c?' selected':'';
+  let y=o.empty?'<option value="">سال</option>':'';for(let i=to;i>=from;i--)y+=`<option value="${i}"${sel(v&&v[0]===i)}>${fa(i)}</option>`;
+  let m=o.empty?'<option value="">ماه</option>':'';MONTHS.forEach((n,i)=>m+=`<option value="${i+1}"${sel(v&&v[1]===i+1)}>${n}</option>`);
+  let d=o.empty?'<option value="">روز</option>':'';for(let i=1;i<=31;i++)d+=`<option value="${i}"${sel(v&&v[2]===i)}>${fa(i)}</option>`;
+  return `<div class="pick" id="${id}"><select aria-label="سال">${y}</select><select aria-label="ماه">${m}</select><select aria-label="روز">${d}</select></div>`}
+function pickVal(id,allowEmpty){const [jy,jm,jd]=[...document.querySelectorAll('#'+id+' select')].map(s=>+s.value);
+  if(allowEmpty&&!jy&&!jm&&!jd)return null;if(!jy||!jm||!jd)throw new Error('تاریخ را کامل انتخاب کن.');
+  const g=j2g(jy,jm,jd),b=g2j(g[0],g[1],g[2]);if(b[0]!==jy||b[1]!==jm||b[2]!==jd)throw new Error('این تاریخ در تقویم شمسی وجود ندارد.');
+  const p=n=>String(n).padStart(2,'0');return{jy,jm,jd,iso:`${g[0]}-${p(g[1])}-${p(g[2])}`}}
+function isoToJ(iso){const [y,m,d]=iso.split('-').map(Number);return g2j(y,m,d)}
+
+/* ── شبکه ── */
+async function api(path,o){o=o||{};const h={Authorization:'tma '+((tg&&tg.initData)||'')};let b;
+  if(o.form)b=o.form;else if(o.body!==undefined){h['Content-Type']='application/json';b=JSON.stringify(o.body)}
+  let r;try{r=await fetch(path,{method:o.method||'GET',headers:h,body:b})}catch(e){throw new Error('اتصال اینترنت برقرار نیست.')}
+  if(!r.ok){let c='server_error';try{c=(await r.json()).error}catch(e){}throw new Error(ERR[c]||('خطا: '+c))}
+  return r.json()}
+const blobs=new Map();
+async function mediaURL(id){if(blobs.has(id))return blobs.get(id);
+  const r=await fetch('/api/media/'+id+'/file',{headers:{Authorization:'tma '+tg.initData}});if(!r.ok)throw new Error('فایل بارگیری نشد.');
+  const u=URL.createObjectURL(await r.blob());blobs.set(id,u);return u}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);
+  mediaURL(+el.dataset.mid).then(u=>{el.src=u}).catch(()=>{el.alt='⚠️'})}),{rootMargin:'200px'});
+function hydrate(root){(root||document).querySelectorAll('img[data-mid]:not([src])').forEach(i=>io.observe(i))}
+function haptic(k){try{tg.HapticFeedback.notificationOccurred(k)}catch(e){}}
+function toast(t){haptic(/ذخیره|ارسال|حذف شد|ثبت شد|♡/.test(t)?'success':'error');const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',3200)}
+async function guard(fn){try{return await fn()}catch(e){toast(e.message||'خطا')}}
+
+/* ── ورقه‌ی پایین (Sheet) ── */
+function openSheet(html){try{tg.BackButton.show()}catch(e){}$('#sheet').innerHTML=html;$('#sbg').classList.add('open');hydrate($('#sheet'))}
+function closeSheet(){try{tg.BackButton.hide()}catch(e){}$('#sbg').classList.remove('open');$('#sheet').innerHTML='';stopRecTracks()}
+$('#sbg').addEventListener('click',e=>{if(e.target.id==='sbg')closeSheet()});
+
+/* ── ناوبری ── */
+const TABS=[['home','🏠','خانه'],['mem','📖','خاطرات'],['voice','🎙','صدا'],['gal','🖼','گالری'],['let','💌','نامه‌ها'],['ev','🌷','مناسبت‌ها']];
+const VIEWS={};
+function renderNav(){$('#nav').hidden=false;$('#nav').innerHTML=TABS.map(t=>`<button data-a="go" data-t="${t[0]}" class="${tab===t[0]?'on':''}"><i>${t[1]}</i>${t[2]}${t[0]==='let'&&me&&me.unread_letters>0&&!me.is_admin?'<span class="dotb"></span>':''}</button>`).join('')}
+async function go(t){tab=t;clearInterval(clockT);renderNav();const el=$('#view');el.innerHTML='<div class="load">در حال بارگیری…</div>';
+  try{await VIEWS[t](el);hydrate(el)}catch(e){el.innerHTML=`<div class="card err">${esc(e.message)}<br><br><button class="btn" data-a="go" data-t="${t}">تلاش دوباره</button></div>`}
+  window.scrollTo(0,0)}
+const ACT={};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&ACT[b.dataset.a])guard(()=>ACT[b.dataset.a](b.dataset,b))});
+ACT.go=d=>go(d.t);ACT.close=()=>closeSheet();
+
+/* ── رضایت و تنظیمات ── */
+function consentSheet(after){openSheet(`<h2>🔒 حریم خصوصی</h2><p style="white-space:pre-wrap">${esc(me.privacy_text)}</p>
+ <div class="row"><button class="btn grow" data-a="consentYes">✅ موافقم</button><button class="btn ghost grow" data-a="close">فعلاً نه</button></div>`);ACT._after=after}
+ACT.consentYes=async()=>{await api('/api/consent',{method:'POST',body:{accept:true}});me.consent=true;closeSheet();toast('رضایتت ثبت شد ♡');if(ACT._after)ACT._after()};
+function canWrite(after){if(me.needs_consent&&!me.consent){consentSheet(after);return false}if(me.paused){toast(ERR.paused);return false}return true}
+ACT.settings=()=>openSheet(`<h2>⚙️ تنظیمات و حریم خصوصی</h2><p style="white-space:pre-wrap">${esc(me.privacy_text)}</p>
+ ${me.needs_consent?`<p class="muted">رضایت: ${me.consent?'✅ تأیید شده':'❌ تأیید نشده'}</p>${me.consent?'':'<button class="btn" data-a="consentYes">✅ موافقم</button>'}`:''}
+ <div class="row" style="margin-top:12px"><button class="btn ghost" data-a="togglePause">${me.paused?'▶️ ادامه‌ی ثبت خاطرات':'⏸ توقف ثبت خاطرات'}</button>
+ <button class="btn danger" data-a="deleteAll">🗑 حذف همه‌ی خاطرات من</button><button class="btn ghost" data-a="close">بستن</button></div>`);
+ACT.togglePause=async()=>{await api('/api/pause',{method:'POST',body:{paused:!me.paused}});me.paused=!me.paused;ACT.settings();toast(me.paused?'ثبت متوقف شد':'ثبت ادامه یافت')};
+ACT.deleteAll=async()=>{if(!confirm('همه‌ی خاطرات، عکس‌ها و ویس‌های ثبت‌شده‌ی خودت برای همیشه حذف می‌شود. مطمئنی؟'))return;
+  const r=await api('/api/delete-all',{method:'POST',body:{confirm:true}});closeSheet();toast(`حذف شد: ${fa(r.deleted_memories)} خاطره، ${fa(r.deleted_files)} فایل`);go(tab)};
+
+/* ── خانه ── */
+VIEWS.home=async el=>{const h=await api('/api/home');const s=h.start,a=h.anniversary;
+  el.innerHTML=`<div class="hero"><div class="title">فقط برای تو <span class="heart">♡</span></div>
+  ${s?`<div class="num">${fa(s.days)}</div><div>روز با هم</div><div class="sub">${fa(s.years)} سال و ${fa(s.months)} ماه و ${fa(s.days_part)} روز · از ${esc(s.jdate)}</div>`
+  :`<div class="num" style="font-size:44px">—</div><div class="sub">تاریخ شروع رابطه هنوز تنظیم نشده${me.is_admin?'':' (مدیر تنظیم می‌کند)'}</div>${me.is_admin?'<br><button class="btn" data-a="admin">تنظیم تاریخ شروع</button>':''}`}</div>
+  <div style="height:12px"></div>
+  ${h.special_today.map(t=>`<div class="card special"><h3>🎉 امروز: ${esc(t)}</h3></div>`).join('')}
+  <div class="card row sp"><div><div class="muted">${esc(h.weekday)} ${esc(h.jdate)}</div><b style="font-size:20px" id="clock">--:--:--</b> <span class="muted">به وقت ایران</span></div>
+  ${a?`<div style="text-align:left"><div class="muted">تا سالگرد</div><b style="font-size:20px;color:var(--rose)">${a.days_left?fa(a.days_left)+' روز':'امروز!'}</b></div>`:''}</div>
+  ${h.memory_of_day?`<div class="card" data-a="openMem" data-id="${h.memory_of_day.id}" style="cursor:pointer"><div class="muted">✨ خاطره‌ی امروز · ${esc(h.memory_of_day.jdate)}</div><h3>${esc(h.memory_of_day.title)}</h3><div class="muted">${esc(h.memory_of_day.body)}</div></div>`:''}
+  <div class="grid3"><div class="card stat"><b>${fa(h.counts.memories)}</b><span>خاطره</span></div><div class="card stat"><b>${fa(h.counts.voices)}</b><span>ویس</span></div><div class="card stat"><b>${fa(h.counts.photos)}</b><span>عکس</span></div></div>
+  <div class="quick"><button class="btn" data-a="newMem">➕ خاطره‌ی تازه</button><button class="btn" data-a="go" data-t="voice">🎙 ضبط ویس</button>
+  <button class="btn" data-a="go" data-t="let">💌 نامه‌ها</button><button class="btn" data-a="go" data-t="ev">🌷 مناسبت‌ها</button></div>
+  <div class="row" style="margin-top:14px"><button class="btn ghost sm" data-a="settings">⚙️ حریم خصوصی و تنظیمات</button>${me.is_admin?'<button class="btn ghost sm" data-a="admin">🛠 پنل مدیر</button>':''}</div>`;
+  const f=new Intl.DateTimeFormat('fa-IR',{timeZone:'Asia/Tehran',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  const tick=()=>{const c=$('#clock');if(c)c.textContent=f.format(new Date())};tick();clockT=setInterval(tick,1000)};
+ACT.admin=()=>go('admin');ACT.openMem=d=>openMemory(+d.id);
+
+const audioBlock=id=>`<button class="btn sm" data-a="playAudio" data-id="${id}" style="margin-top:8px">▶️ پخش</button><audio controls hidden preload="none"></audio>`;
+ACT.playAudio=async(d,b)=>{const a=b.nextElementSibling;b.disabled=true;try{a.src=await mediaURL(+d.id);a.hidden=false;b.hidden=true;await a.play()}catch(e){a.hidden=true;b.hidden=false;b.disabled=false;toast('پخش این فرمت در این دستگاه ممکن نیست؛ از داخل ربات بشنو.')}};
+/* ── خاطرات ── */
+let memFilter={q:'',type:'',from:null,to:null};
+VIEWS.mem=async el=>{
+  el.innerHTML=`<div class="row sp"><h2>📖 دفتر خاطرات</h2><button class="btn sm" data-a="newMem">➕ افزودن</button></div>
+  <input id="mq" type="search" placeholder="جست‌وجو در عنوان و متن…" value="${esc(memFilter.q)}">
+  <div class="chips">${[['','همه'],['photo','عکس‌دار'],['voice','ویس‌دار'],['text','فقط متن']].map(c=>`<button class="chip ${memFilter.type===c[0]?'on':''}" data-a="mtype" data-v="${c[0]}">${c[1]}</button>`).join('')}</div>
+  <details class="card"><summary>فیلتر بر اساس تاریخ</summary><label>از تاریخ</label>${picker('pf',{empty:true,val:memFilter.from})}<label>تا تاریخ</label>${picker('pt',{empty:true,val:memFilter.to})}
+  <div class="row" style="margin-top:10px"><button class="btn sm" data-a="mdate">اعمال</button><button class="btn ghost sm" data-a="mdateClear">پاک کردن</button></div></details>
+  <div id="mlist"></div>`;
+  let t;$('#mq').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>{memFilter.q=e.target.value;loadMems()},300)});loadMems()};
+async function loadMems(){const p=new URLSearchParams();if(memFilter.q)p.set('q',memFilter.q);if(memFilter.type)p.set('type',memFilter.type);
+  if(memFilter.from)p.set('from',j2iso(memFilter.from));if(memFilter.to)p.set('to',j2iso(memFilter.to));
+  const box=$('#mlist');if(!box)return;let r;try{r=await api('/api/memories?'+p)}catch(e){box.innerHTML=`<div class="card err">${esc(e.message)}</div>`;return}
+  box.innerHTML=r.items.length?`<div class="tl">${r.items.map(m=>`<div class="item card" data-a="openMem" data-id="${m.id}">
+   ${m.cover?`<img class="thumb" data-mid="${m.cover}" alt="">`:''}<div class="grow"><b>${esc(m.title)}</b> ${m.from_admin?'<span class="badge">💌 از او</span>':''}<div class="muted">${esc(m.jdate)}</div>
+   <div class="muted">${esc(m.body.slice(0,90))}${m.body.length>90?'…':''}</div>${m.photos?`<span class="badge">🖼 ${fa(m.photos)}</span>`:''}${m.voices?`<span class="badge">🎙 ${fa(m.voices)}</span>`:''}</div></div>`).join('')}</div>`
+  :`<div class="card muted">خاطره‌ای پیدا نشد. با «افزودن» اولین خاطره را ثبت کن ♡</div>`;hydrate(box)}
+function j2iso(j){const g=j2g(j[0],j[1],j[2]),p=n=>String(n).padStart(2,'0');return`${g[0]}-${p(g[1])}-${p(g[2])}`}
+ACT.mtype=d=>{memFilter.type=d.v;go('mem')};
+ACT.mdate=()=>{const f=pickVal('pf',true),t=pickVal('pt',true);memFilter.from=f?[f.jy,f.jm,f.jd]:null;memFilter.to=t?[t.jy,t.jm,t.jd]:null;loadMems()};
+ACT.mdateClear=()=>{memFilter.from=memFilter.to=null;go('mem')};
+
+async function openMemory(id){const m=await api('/api/memories/'+id);const ph=m.media.filter(x=>x.kind==='photo'),vo=m.media.filter(x=>x.kind==='voice');
+  openSheet(`<h2>${esc(m.title)}</h2><div class="muted">${esc(m.jdate)} ${m.from_admin?'· 💌 از او':''}</div><p style="white-space:pre-wrap">${esc(m.body)}</p>
+  ${ph.length?`<div class="gallery">${ph.map(x=>`<img data-mid="${x.id}" data-a="photo" data-id="${x.id}" alt="${esc(x.title)}">`).join('')}</div>`:''}
+  ${vo.map(x=>`<div class="card"><b>🎙 ${esc(x.title||'ویس')}</b> <span class="muted">${fa(x.duration)} ثانیه</span>${audioBlock(x.id)}</div>`).join('')}
+  <div class="row" style="margin-top:12px">${m.mine?`<button class="btn" data-a="editMem" data-id="${m.id}">✏️ ویرایش</button><button class="btn danger" data-a="delMem" data-id="${m.id}">🗑 حذف</button>`:''}<button class="btn ghost" data-a="close">بستن</button></div>`);
+  window._memPhotos=ph}
+ACT.photo=d=>openPhoto(+d.id);
+ACT.delMem=async d=>{if(!confirm('این خاطره با همه‌ی فایل‌هایش حذف شود؟'))return;await api('/api/memories/'+d.id,{method:'DELETE'});closeSheet();toast('حذف شد');go(tab)};
+ACT.newMem=()=>{if(canWrite(ACT.newMem))memEditor()};
+ACT.editMem=async d=>memEditor(await api('/api/memories/'+d.id));
+async function memEditor(m){const my=m?await api('/api/media?kind=voice'):{items:[]};const free=my.items.filter(v=>v.mine&&!v.memory_id);
+  openSheet(`<h2>${m?'✏️ ویرایش خاطره':'➕ خاطره‌ی تازه'}</h2><label>عنوان</label><input id="mt" maxlength="120" value="${esc(m?m.title:'')}">
+  <label>متن</label><textarea id="mb" maxlength="5000">${esc(m?m.body:'')}</textarea><label>تاریخ خاطره</label>${picker('md',{val:m?isoToJ(m.mem_date):null})}
+  ${m&&m.media.length?`<label>فایل‌های فعلی</label>${m.media.map(x=>`<div class="row sp card"><span>${x.kind==='photo'?'🖼':'🎙'} ${esc(x.title||'')}</span><button class="btn danger sm" data-a="delMedia" data-id="${x.id}" data-mem="${m.id}">حذف</button></div>`).join('')}`:''}
+  <label>افزودن عکس (اختیاری)</label><input id="mf" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+  ${m&&free.length?`<label>پیوست ویس ذخیره‌شده</label><select id="mv"><option value="">— بدون پیوست —</option>${free.map(v=>`<option value="${v.id}">${esc(v.title||'ویس')} (${fa(v.duration)}ث)</option>`).join('')}</select>`:''}
+  <p class="muted" id="mst"></p><div class="row"><button class="btn grow" data-a="saveMem" ${m?`data-id="${m.id}"`:''}>💾 ذخیره</button><button class="btn ghost" data-a="close">لغو</button></div>`)}
+ACT.delMedia=async(d,b)=>{if(!confirm('این فایل حذف شود؟'))return;await api('/api/media/'+d.id,{method:'DELETE'});b.closest('.card').remove();toast('حذف شد')};
+ACT.saveMem=async(d,btn)=>{const title=$('#mt').value.trim(),body=$('#mb').value.trim();if(!title)return toast(ERR.title_required);
+  const dt=pickVal('md');btn.disabled=true;const st=$('#mst');
+  try{const payload={title,body,mem_date:dt.iso};let id=d.id;
+    if(id)await api('/api/memories/'+id,{method:'PUT',body:payload});else id=(await api('/api/memories',{method:'POST',body:payload})).id;
+    const files=[...$('#mf').files];let fail=0;
+    for(let i=0;i<files.length;i++){st.textContent=`در حال آپلود عکس ${fa(i+1)} از ${fa(files.length)}…`;
+      const f=new FormData();f.append('kind','photo');f.append('memory_id',id);f.append('title',title);f.append('file',files[i]);
+      try{await api('/api/media',{method:'POST',form:f})}catch(e){fail++;toast(e.message)}}
+    const mv=$('#mv');if(mv&&mv.value)await api('/api/media/'+mv.value,{method:'PATCH',body:{memory_id:+id}});
+    closeSheet();toast(fail?`ذخیره شد؛ ${fa(fail)} فایل ناموفق بود`:'خاطره ذخیره شد ♡');go(tab)}
+  catch(e){toast(e.message)}finally{btn.disabled=false}};
+
+/* ── صدا ── */
+const R={rec:null,stream:null,chunks:[],t0:0,timer:null,blob:null,mime:'',dur:0,state:'idle',url:null};
+function stopRecTracks(){clearInterval(R.timer);if(R.rec&&R.rec.state==='recording'){R.rec.onstop=null;try{R.rec.stop()}catch(e){}}if(R.stream)R.stream.getTracks().forEach(t=>t.stop());R.stream=null}
+function pickMime(){return['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'].find(m=>window.MediaRecorder&&MediaRecorder.isTypeSupported(m))||''}
+const unsupportedMsg='ضبط مستقیم در این دستگاه/تلگرام در دسترس نیست یا اجازه‌ی میکروفون داده نشد. راه جایگزین: ویس را از داخل ربات بفرست (دکمه‌ی «🎙 صدای تو» ← «ضبط/ارسال ویس جدید»).';
+VIEWS.voice=async el=>{const r=await api('/api/media?kind=voice');
+  el.innerHTML=`<h2>🎙 صدای تو</h2><div class="card" id="recbox"></div><h3>ویس‌های ذخیره‌شده</h3>
+  ${r.items.length?r.items.map(v=>`<div class="card"><div class="row sp"><div><b>${esc(v.title||'ویس')}</b> ${v.memory_title?`<span class="badge">📖 ${esc(v.memory_title)}</span>`:''}<div class="muted">${esc(v.jdate)} · ${fa(v.duration)} ثانیه</div></div>
+  ${v.mine?`<button class="btn danger sm" data-a="delVoice" data-id="${v.id}">حذف</button>`:''}</div>${audioBlock(v.id)}</div>`).join(''):'<div class="card muted">هنوز ویسی ذخیره نشده.</div>'}`;
+  R.state=R.blob?'done':'idle';renderRec()};
+async function renderRec(){const b=$('#recbox');if(!b)return;
+  if(R.state==='idle')b.innerHTML=`<div class="rec"><button class="btn" data-a="recStart">⏺ شروع ضبط</button></div><p class="muted" style="text-align:center">با زدن دکمه، مرورگر اجازه‌ی میکروفون را می‌پرسد.</p>`;
+  else if(R.state==='rec')b.innerHTML=`<div class="rec"><span class="dot"></span><b id="rt">${fa('00:00')}</b></div><div class="rec"><button class="btn" data-a="recStop">⏹ توقف</button></div>`;
+  else{if(R.url)URL.revokeObjectURL(R.url);R.url=URL.createObjectURL(R.blob);let mems={items:[]};try{mems=await api('/api/memories')}catch(e){}
+    const mine=mems.items.filter(m=>m.mine);
+    b.innerHTML=`<b>پیش‌نمایش (${fa(R.dur)} ثانیه)</b><audio controls src="${R.url}"></audio><label>عنوان</label><input id="vt" maxlength="120" placeholder="مثلاً: صدای شب‌بخیر">
+    <label>پیوست به خاطره (اختیاری)</label><select id="vm"><option value="">— بدون پیوست —</option>${mine.map(m=>`<option value="${m.id}">${esc(m.title)}</option>`).join('')}</select>
+    <div class="row" style="margin-top:12px"><button class="btn grow" data-a="recSave">💾 ذخیره در «صدای تو»</button><button class="btn danger" data-a="recDiscard">🗑 حذف و ضبط مجدد</button></div>`}}
+ACT.recStart=async()=>{if(!canWrite(ACT.recStart))return;
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder)return toast(unsupportedMsg);
+  try{R.stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){return toast(unsupportedMsg)}
+  R.mime=pickMime();R.chunks=[];R.rec=new MediaRecorder(R.stream,R.mime?{mimeType:R.mime}:{});
+  R.rec.ondataavailable=e=>{if(e.data&&e.data.size)R.chunks.push(e.data)};
+  R.rec.onstop=()=>{clearInterval(R.timer);R.stream&&R.stream.getTracks().forEach(t=>t.stop());R.blob=new Blob(R.chunks,{type:R.rec.mimeType||R.mime||'audio/webm'});R.dur=Math.max(1,Math.round((Date.now()-R.t0)/1000));R.state='done';renderRec()};
+  R.t0=Date.now();R.rec.start();R.state='rec';renderRec();
+  R.timer=setInterval(()=>{const s=Math.floor((Date.now()-R.t0)/1000),e=$('#rt');if(e)e.textContent=fa(String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'));if(s>=600)ACT.recStop()},500)};
+ACT.recStop=()=>{if(R.rec&&R.rec.state==='recording')R.rec.stop()};
+ACT.recDiscard=()=>{R.blob=null;R.state='idle';renderRec()};
+ACT.recSave=async(d,btn)=>{if(!R.blob)return;btn.disabled=true;
+  try{const ext=R.blob.type.includes('mp4')?'m4a':R.blob.type.includes('ogg')?'ogg':'webm';const f=new FormData();
+    f.append('kind','voice');f.append('duration',R.dur);f.append('title',$('#vt').value.trim()||('ویس '+new Date().toLocaleDateString('fa-IR')));
+    const mv=$('#vm').value;if(mv)f.append('memory_id',mv);f.append('file',R.blob,'voice.'+ext);
+    await api('/api/media',{method:'POST',form:f});R.blob=null;R.state='idle';toast('ویس ذخیره شد ♡');go('voice')}
+  catch(e){toast(e.message)}finally{btn.disabled=false}};
+ACT.delVoice=async d=>{if(!confirm('این ویس حذف شود؟'))return;await api('/api/media/'+d.id,{method:'DELETE'});go('voice')};
+
+/* ── گالری ── */
+let photos=[];
+VIEWS.gal=async el=>{photos=(await api('/api/media?kind=photo')).items;
+  el.innerHTML=`<div class="row sp"><h2>🖼 گالری</h2><button class="btn sm" data-a="upPhoto">➕ عکس تازه</button></div>
+  ${photos.length?`<div class="gallery">${photos.map(p=>`<img data-mid="${p.id}" data-a="photo" data-id="${p.id}" alt="${esc(p.title)}">`).join('')}</div>`:'<div class="card muted">هنوز عکسی ثبت نشده.</div>'}`};
+ACT.upPhoto=()=>{if(!canWrite(ACT.upPhoto))return;
+  openSheet(`<h2>➕ عکس تازه</h2><label>عکس</label><input id="pf1" type="file" accept="image/jpeg,image/png,image/webp"><label>عنوان</label><input id="pt1" maxlength="120"><label>توضیح</label><textarea id="pc1" maxlength="500" style="min-height:70px"></textarea>
+  <div class="row" style="margin-top:12px"><button class="btn grow" data-a="savePhoto">💾 ذخیره</button><button class="btn ghost" data-a="close">لغو</button></div>`)};
+ACT.savePhoto=async(d,btn)=>{const file=$('#pf1').files[0];if(!file)return toast('یک عکس انتخاب کن.');btn.disabled=true;
+  try{const f=new FormData();f.append('kind','photo');f.append('title',$('#pt1').value.trim());f.append('caption',$('#pc1').value.trim());f.append('file',file);
+    await api('/api/media',{method:'POST',form:f});closeSheet();toast('عکس ذخیره شد ♡');go('gal')}catch(e){toast(e.message)}finally{btn.disabled=false}};
+async function openPhoto(id){let p=photos.find(x=>x.id===id)||(window._memPhotos||[]).find(x=>x.id===id);if(!p){photos=(await api('/api/media?kind=photo')).items;p=photos.find(x=>x.id===id)}if(!p)return;
+  openSheet(`<img class="big" data-mid="${p.id}" alt="${esc(p.title)}"><h3 style="margin-top:10px">${esc(p.title||'بدون عنوان')}</h3><p>${esc(p.caption)}</p>
+  <div class="muted">${esc(p.jdate)} ${p.memory_title?'· 📖 '+esc(p.memory_title):''}</div>
+  <div class="row" style="margin-top:12px">${p.mine?`<button class="btn" data-a="editPhoto" data-id="${p.id}">✏️ ویرایش</button><button class="btn danger" data-a="delPhoto" data-id="${p.id}">🗑 حذف</button>`:''}<button class="btn ghost" data-a="close">بستن</button></div>`)}
+ACT.editPhoto=async d=>{const p=photos.find(x=>x.id==d.id)||{};const mems=(await api('/api/memories')).items.filter(m=>m.mine);
+  openSheet(`<h2>✏️ ویرایش عکس</h2><label>عنوان</label><input id="et" value="${esc(p.title)}" maxlength="120"><label>توضیح</label><textarea id="ec" maxlength="500" style="min-height:70px">${esc(p.caption)}</textarea>
+  <label>اتصال به خاطره</label><select id="em"><option value="">— بدون اتصال —</option>${mems.map(m=>`<option value="${m.id}" ${p.memory_id===m.id?'selected':''}>${esc(m.title)}</option>`).join('')}</select>
+  <div class="row" style="margin-top:12px"><button class="btn grow" data-a="saveEdit" data-id="${d.id}">💾 ذخیره</button><button class="btn ghost" data-a="close">لغو</button></div>`)};
+ACT.saveEdit=async d=>{const m=$('#em').value;await api('/api/media/'+d.id,{method:'PATCH',body:{title:$('#et').value,caption:$('#ec').value,memory_id:m?+m:null}});closeSheet();toast('ذخیره شد');go('gal')};
+ACT.delPhoto=async d=>{if(!confirm('این عکس حذف شود؟'))return;await api('/api/media/'+d.id,{method:'DELETE'});closeSheet();go(tab==='gal'?'gal':tab)};
+
+/* ── نامه‌ها ── */
+let letters=[];
+VIEWS.let=async el=>{letters=(await api('/api/letters')).items;me.unread_letters=letters.filter(l=>!l.read).length;renderNav();
+  el.innerHTML=`<div class="row sp"><h2>💌 نامه‌ها</h2>${me.is_admin?'<button class="btn sm" data-a="newLetter">✉️ نامه‌ی تازه</button>':''}</div>
+  ${letters.length?letters.map(l=>`<div class="card row sp" data-a="openLetter" data-id="${l.id}" style="cursor:pointer"><div><b>${l.read?'📭':'💌'} ${esc(l.title)}</b><div class="muted">${esc(l.jdate)}</div></div>${!l.read&&!me.is_admin?'<span class="badge">جدید</span>':''}</div>`).join(''):'<div class="card muted">هنوز نامه‌ای نرسیده است.</div>'}`};
+ACT.openLetter=d=>{const l=letters.find(x=>x.id==d.id);if(!l)return;
+  const paper=()=>`<h2>${esc(l.title)}</h2><div class="muted">${esc(l.jdate)}</div><div class="paper" style="margin:12px 0">${esc(l.body)}</div>
+   <div class="row">${me.is_admin?`<button class="btn danger" data-a="delLetter" data-id="${l.id}">🗑 حذف نامه</button>`:''}<button class="btn ghost" data-a="close">بستن</button></div>`;
+  if(l.read||me.is_admin){openSheet(paper());return}
+  openSheet(`<h2 style="text-align:center">یک نامه برای تو رسیده 💌</h2><div class="env" id="env" data-a="openEnv" data-id="${l.id}" role="button" tabindex="0" aria-label="باز کردن نامه"><div class="flap"></div>♡</div><p class="muted" style="text-align:center">برای باز کردن پاکت لمسش کن</p>`);
+  ACT._paper=paper};
+ACT.openEnv=async d=>{const e=$('#env');if(!e||e.classList.contains('open'))return;e.classList.add('open');
+  api('/api/letters/'+d.id+'/read',{method:'POST'}).then(()=>{const l=letters.find(x=>x.id==d.id);if(l)l.read=true;me.unread_letters=Math.max(0,(me.unread_letters||1)-1);renderNav()}).catch(()=>{});
+  setTimeout(()=>{$('#sheet').innerHTML=ACT._paper()},750)};
+ACT.newLetter=()=>openSheet(`<h2>✉️ نامه‌ی تازه</h2><label>عنوان</label><input id="lt" maxlength="120"><label>متن نامه</label><textarea id="lb" maxlength="5000" style="min-height:180px"></textarea>
+  <div class="row" style="margin-top:12px"><button class="btn grow" data-a="sendLetter">📨 ارسال</button><button class="btn ghost" data-a="close">لغو</button></div>`);
+ACT.sendLetter=async(d,btn)=>{btn.disabled=true;try{await api('/api/letters',{method:'POST',body:{title:$('#lt').value,body:$('#lb').value}});closeSheet();toast('نامه ارسال شد ♡');go('let')}catch(e){toast(e.message)}finally{btn.disabled=false}};
+ACT.delLetter=async d=>{if(!confirm('این نامه حذف شود؟'))return;await api('/api/letters/'+d.id,{method:'DELETE'});closeSheet();go('let')};
+
+/* ── مناسبت‌ها ── */
+VIEWS.ev=async el=>{const r=await api('/api/events');
+  el.innerHTML=`<div class="row sp"><h2>🌷 مناسبت‌ها</h2>${me.is_admin?'<button class="btn sm" data-a="newEvent">➕ مناسبت</button>':''}</div>
+  ${r.items.length?r.items.map(e=>`<div class="card ${e.days_left===0?'special':''}"><div class="row sp"><div><b>${e.days_left===0?'🎉 ':''}${esc(e.title)}</b><div class="muted">${esc(e.jdate)} ${e.repeat?'· هر سال':''}</div></div>
+  <div style="text-align:left"><b style="font-size:20px;color:var(--rose)">${e.days_left===0?'امروز!':fa(e.days_left)}</b>${e.days_left?'<div class="muted">روز مانده</div>':''}</div></div>
+  ${me.is_admin&&!e.builtin?`<button class="btn danger sm" data-a="delEvent" data-id="${e.id}" style="margin-top:8px">حذف</button>`:''}</div>`).join(''):'<div class="card muted">مناسبتی ثبت نشده است.</div>'}
+  <p class="muted">تاریخ مناسبت‌های قمری (مثل روز دختر) را مدیر هر سال از تقویم رسمی ایران ثبت یا اصلاح می‌کند.</p>`};
+ACT.newEvent=()=>openSheet(`<h2>➕ مناسبت تازه</h2><label>عنوان</label><input id="evt" maxlength="80"><label>تاریخ شمسی</label>${picker('evd',{from:jToday()[0],to:jToday()[0]+3})}
+  <label><input type="checkbox" id="evr" style="width:auto"> هر سال در همین ماه و روز تکرار شود (سال نادیده گرفته می‌شود)</label>
+  <div class="row" style="margin-top:12px"><button class="btn grow" data-a="saveEvent">💾 ذخیره</button><button class="btn ghost" data-a="close">لغو</button></div>`);
+ACT.saveEvent=async()=>{const d=pickVal('evd');await api('/api/events',{method:'POST',body:{title:$('#evt').value,jy:d.jy,jm:d.jm,jd:d.jd,repeat:$('#evr').checked}});closeSheet();go('ev')};
+ACT.delEvent=async d=>{if(!confirm('این مناسبت حذف شود؟'))return;await api('/api/events/'+d.id,{method:'DELETE'});go('ev')};
+
+/* ── پنل مدیر ── */
+VIEWS.admin=async el=>{if(!me.is_admin)throw new Error(ERR.admin_only);const s=await api('/api/admin/stats');
+  el.innerHTML=`<h2>🛠 پنل مدیر</h2><div class="grid3"><div class="card stat"><b>${fa(s.memories)}</b><span>خاطره</span></div><div class="card stat"><b>${fa(s.voices)}</b><span>ویس</span></div><div class="card stat"><b>${fa(s.photos)}</b><span>عکس</span></div></div>
+  <div class="card muted">نامه‌ها: ${fa(s.letters)} · حجم فایل‌ها: ${fa(s.storage_mb)} مگابایت · پیام‌های خودکار: ${s.gemini?'با Gemini':'پیام‌های آماده'} · آپ‌تایم: ${fa(s.uptime_min)} دقیقه</div>
+  <div class="card"><h3>🗓 تاریخ شروع رابطه</h3>${picker('sd',{from:jToday()[0]-40,to:jToday()[0]})}<br><button class="btn" data-a="saveStart">ذخیره</button></div>
+  <div class="card"><h3>🧾 زمان‌بندی پیام‌ها</h3>${s.schedule.length?s.schedule.map(r=>`<div class="muted">${esc(r.day)} · ${r.kind==='morning'?'صبح':'شب'} · ${esc(r.status)} (تلاش ${fa(r.attempts)})${r.error?' — '+esc(r.error):''}</div>`).join(''):'<div class="muted">هنوز اجرایی ثبت نشده.</div>'}</div>
+  <div class="card ${s.errors.length?'err':''}"><h3>⚠️ آخرین خطاها</h3>${s.errors.length?s.errors.map(r=>`<div class="muted">${esc(r.ts)} [${esc(r.scope)}] ${esc(r.message)}</div>`).join(''):'<div class="muted">بدون خطا ✅</div>'}</div>`};
+ACT.saveStart=async()=>{const d=pickVal('sd');await api('/api/admin/start',{method:'POST',body:{jy:d.jy,jm:d.jm,jd:d.jd}});toast('تاریخ شروع ذخیره شد ♡')};
+
+/* ── شروع ── */
+(async function init(){
+  const v=$('#view');
+  if(!tg||!tg.initData){v.innerHTML='<div class="card err">این برنامه فقط از داخل تلگرام و با دکمه‌ی ربات باز می‌شود.</div>';return}
+  try{me=await api('/api/me')}catch(e){v.innerHTML=`<div class="card err">${esc(e.message)}</div>`;return}
+  go('home')})();
+window.addEventListener('unhandledrejection',e=>{toast((e.reason&&e.reason.message)||'خطای غیرمنتظره')});
+</script>
+</body>
+</html>
